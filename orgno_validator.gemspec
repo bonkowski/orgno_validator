@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "orgno_validator"
   gem.require_paths = ["lib"]
-  gem.version       = '0.0.1'
+  gem.version       = '0.0.3'
   gem.add_dependency("activemodel", ">= 0")
   gem.add_development_dependency("rspec", ">= 0")
 end
