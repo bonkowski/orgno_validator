@@ -20,7 +20,7 @@ describe OrgnoValidator do
 
   describe "validation" do
     context "given the valid orgno" do
-      [ "810243562", "948776901", "957929621"].each do |orgno|
+      %W(810243562 948776901 957929621).each do |orgno|
         it "#{orgno.inspect} should be valid" do
           TestCompany.new(:orgno => orgno).should be_valid
         end
@@ -28,12 +28,22 @@ describe OrgnoValidator do
     end
 
     context "given the invalid orgno" do
-      [ "810243561", "948776900", "957929620"].each do |orgno|
+      %W(810243561 948776900 957929620).each do |orgno|
         it "#{orgno.inspect} should not be valid" do
           TestCompany.new(:orgno => orgno).should_not be_valid
         end
       end
     end
+
+    context "given a string with 9 characters" do
+      %W(abcdefghi uytrewqas).each do |orgno|
+        it "#{orgno.inspect} should not be valid" do
+          TestCompany.new(:orgno => orgno).should_not be_valid
+        end
+      end
+    end
+
+
   end
 
   describe "error messages" do
@@ -56,7 +66,7 @@ describe OrgnoValidator do
       end
     end
 
-  describe "nil email" do
+  describe "nil orgno" do
     it "should not be valid when :allow_nil option is missing" do
       TestCompany.new(:orgno => nil).should_not be_valid
     end

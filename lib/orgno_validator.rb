@@ -30,6 +30,7 @@ class OrgnoValidator < ActiveModel::EachValidator
 
   def self.valid_orgno?(orgno)
     return false if !orgno || orgno.to_s.length != ORGNO_LENGTH
+    return false unless is_numeric?(orgno)
 
     orgno_digits = orgno.to_s.each_char.map { |d| d.to_i }
     sum = 0
@@ -43,5 +44,9 @@ class OrgnoValidator < ActiveModel::EachValidator
 
     return false if control_digit == 10
     return control_digit == orgno_digits.last
+  end
+
+  def self.is_numeric?(s)
+      Float(s) rescue false
   end
 end

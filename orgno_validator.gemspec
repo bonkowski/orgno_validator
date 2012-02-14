@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.authors       = ["André Bonkowski"]
-  gem.email         = ["andre@kodemaker.no"]
+  gem.email         = %W(andre@kodemaker.no)
   gem.description   = %q{Validate Norwegian "organisasjonsnummer"}
   gem.summary       = %q{Simple validator that validate Norwegian "organisasjonsnummer}
   gem.homepage      = "https://github.com/bonkowski/orgno_validator"
@@ -11,8 +11,8 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "orgno_validator"
-  gem.require_paths = ["lib"]
-  gem.version       = '0.0.3'
+  gem.require_paths = %W(lib)
+  gem.version       = '1.0.0'
   gem.add_dependency("activemodel", ">= 0")
   gem.add_development_dependency("rspec", ">= 0")
 end
